@@ -3,7 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 
 
-app.post('/', function(req, res){
+app.post('/alice-webhook', function(req, res){
     var ans = {
         version: req.version,
         session: req.session,
