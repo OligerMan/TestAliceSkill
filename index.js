@@ -1,15 +1,23 @@
-const { json } = require('micro');
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
 
-module.exports = async req => {
-    const { request, session, version } = await json(req);
 
-    return {
-        version,
-        session,
-        response:{
-            text: request.original_utterance || 'Hello',
+app.post('/', function(req, res){
+    var ans = {
+        version: req.version,
+        session: req.session,
+        response: {
+            text: 'kek',
+            end_session: false
+        }
+    }
+    res.send(ans);
+});
 
-            end_session: false,
-        },
-    };
-};
+
+var port = process.env.PORT || 5000;
+
+http.listen(port, function(){
+    console.log('listening on port ' + port);
+});
