@@ -3,11 +3,11 @@ var app = express();
 var http = require('http').Server(app);
 
 
-app.post('/alice-webhook', function(req, res){
-    console.log(req.version);
+app.post('/alice-webhook', function(req, res, data){
+    console.log(data.version);
     var ans = {
         version: '1.0',
-        session: req.session,
+        session: data.session,
         response: {
             text: 'kek',
             end_session: false
