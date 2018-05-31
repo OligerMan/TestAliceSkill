@@ -4,8 +4,9 @@ var http = require('http').Server(app);
 
 
 app.post('/alice-webhook', function(req, res){
+    console.log(req.version);
     var ans = {
-        version: req.version,
+        version: '1.0',
         session: req.session,
         response: {
             text: 'kek',
