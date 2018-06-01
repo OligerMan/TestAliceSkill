@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 
+app.use(express.bodyParser());
 
 app.post('/alice-webhook', function(req, res){
     console.log(req.body.version);
