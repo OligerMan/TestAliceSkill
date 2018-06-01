@@ -16,7 +16,7 @@ app.post('/alice-webhook', function(req, res){
         version: req.body.version,
         session: req.body.session,
         response: {
-            text: 'kek',
+            text: req.body.request.command,
             end_session: false
         }
     }
