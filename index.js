@@ -2,12 +2,18 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 
-app.use(express.bodyParser());
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
 
 app.post('/alice-webhook', function(req, res){
-    console.log(req.body.version);
+    console.log('Yandex Dialogs version ' + req.body.version);
     var ans = {
-        version: '1.0',
+        version: req.body.version,
         session: req.body.session,
         response: {
             text: 'kek',
