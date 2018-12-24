@@ -20,6 +20,10 @@ app.post('/alice-webhook', function(req, res){
             end_session: false
         }
     }
+
+    if (ans.response.text.length == 0) {
+        ans.response.text = "Hello, I'm computer parrot, did you say something?"
+    }
     res.send(ans);
 });
 
